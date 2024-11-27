@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Hello World</title>
+      <script src="http://localhost:8081/webui.js"></script>
+      <link rel="icon" href="/favicon.ico" type="image/x-icon">
+      <style>
+         body {
+            background: linear-gradient(to left, #36265a, #654da9);
+            color: AliceBlue;
+            font: 16px sans-serif;
+            text-align: center;
+            margin-top: 30px;
+         }
+      </style>
+   </head>
+   <body>
+      <h1>Welcome to WebUI!</h1>
+      <input type="text" id="name" value="Bryan" />
+      <button onclick="handleGoResponse();">Call Go</button>
+      <br />
+      <samp id="greeting"></samp>
+      <script>
+         async function handleGoResponse() {
+            const inputName = document.getElementById('name');
+            // Call a Go function.
+            const result = await webui.greet(inputName.value);
+            document.getElementById('greeting').innerHTML = result;
+         }
+         document.addEventListener('contextmenu', ev => ev.preventDefault())
+         document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+               e.preventDefault();
+            }
+         });
+      </script>
+   </body>
+</html>

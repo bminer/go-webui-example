@@ -1,0 +1,1 @@
+CGO_LDFLAGS="-static" go run main.go
