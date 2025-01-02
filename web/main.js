@@ -24,7 +24,9 @@ d.addEventListener("DOMContentLoaded", async () => {
 		function fatal(msg) {
 			console.error(msg)
 			w.close()
-			alert("Fatal error: " + msg)
+			setTimeout(() => {
+				alert("Fatal error: " + msg)
+			}, 0)
 		}
 		if (env == null) {
 			fatal("Failed to fetch environment")
