@@ -1,1 +1,0 @@
-go run github.com/akavel/rsrc -arch amd64 -ico icon.ico

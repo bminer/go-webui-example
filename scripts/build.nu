@@ -1,1 +1,0 @@
-CGO_LDFLAGS="-static -Wl,-subsystem,windows" go build ../*.go
