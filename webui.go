@@ -41,8 +41,8 @@ func run(mux *http.ServeMux) {
 	w.Bind("", eventHandler)
 	// Redirect /webui.js requests to WebUI
 	mux.HandleFunc("/webui.js", func(rw http.ResponseWriter, r *http.Request) {
-		webUIPort := w.GetPort()
-		if webUIPort == 0 {
+		webUIPort, err := w.GetPort()
+		if err != nil || webUIPort == 0 {
 			http.Error(rw, "WebUI port unknown", http.StatusServiceUnavailable)
 			return
 		}
@@ -74,7 +74,11 @@ func run(mux *http.ServeMux) {
 	}
 
 	// Wait until all windows are closed
-	log.Printf("WebUI is running on http://localhost:%d", w.GetPort())
+	webUIPort, err := w.GetPort()
+	if err != nil {
+		panic(err)
+	}
+	log.Printf("WebUI is running on http://localhost:%d", webUIPort)
 	ui.Wait()
 }
 
