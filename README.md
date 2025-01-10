@@ -1,2 +1,4 @@
 # go-webui-example
-An more fully-feature example project using go-webui
+
+A more fully-featured example project using
+[go-webui](https://github.com/webui-dev/go-webui)
